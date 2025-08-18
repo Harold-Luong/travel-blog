@@ -1,0 +1,45 @@
+server:
+  servlet:
+    context-path: /api/travel-blog
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: travel-blog
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+    show-sql: ${SPRING_JPA_SHOW_SQL}
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: ${SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL}
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace
+
+app:
+  jwt:
+    secret: ${APP_JWT_SECRET}
+    expiration-ms: ${APP_JWT_EXPIRATION_MS:86400000}
+
+google:
+  client-id: ${GOOGLE_CLIENT_ID}
+
+cloudinary:
+  name: ${CLOUD_NAME}
+  api-key: ${API_KEY}
+  api-secret: ${API_SECRET}

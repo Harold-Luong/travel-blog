@@ -58,7 +58,7 @@ public class TripService {
                 .startDate(request.getStartDate())
                 .endDate(request.getEndDate())
                 .tripStatus(TRIP_STATUS.fromValue(request.getStatus()))
-                .thumbnail(request.getThumbnail())
+
                 .build();
         String slug = SlugUtil.generateUniqueSlug(trip.getTitle(),
                 s -> tripRepository.existsBySlugAndIsDeletedFalse(s));
@@ -76,7 +76,6 @@ public class TripService {
             tripUpdate.setStartDate(request.getStartDate());
             tripUpdate.setEndDate(request.getEndDate());
             tripUpdate.setTripStatus(TRIP_STATUS.fromValue(request.getStatus()));
-            tripUpdate.setThumbnail(request.getThumbnail());
 
         String slug = SlugUtil.generateUniqueSlug(
                 tripUpdate.getTitle(),

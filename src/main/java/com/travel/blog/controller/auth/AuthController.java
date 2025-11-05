@@ -27,12 +27,6 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final AuthService authService;
 
-    /**
-     * Đăng ký
-     *
-     * @param req
-     * @return
-     */
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody AuthRequest req) {
         if (userRepository.existsByEmail(req.email())) {
@@ -47,12 +41,6 @@ public class AuthController {
         return ResponseEntity.ok("User registered!");
     }
 
-    /**
-     * Đăng nhập
-     *
-     * @param req
-     * @return
-     */
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody AuthRequest req) {
         logger.info("req = {}", req);
@@ -67,12 +55,6 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(principal));
     }
 
-    /**
-     * Đăng nhập bằng google
-     *
-     * @param body
-     * @return
-     */
     @PostMapping("/google")
     public ResponseEntity<?> loginWithGoogle(@RequestBody Map<String, String> body) {
         String idToken = body.get("idToken");

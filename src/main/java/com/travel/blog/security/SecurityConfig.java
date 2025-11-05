@@ -44,7 +44,7 @@ public class SecurityConfig {
                     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
                     config.setAllowedHeaders(List.of("*"));
                     config.setExposedHeaders(List.of("Authorization"));
-                    config.setAllowCredentials(true); // cô phép gửi c
+                    config.setAllowCredentials(true);
                     return config;
                 }))
                 // Tắt CSRF vì ta đang dùng JWT

@@ -49,9 +49,9 @@ public class LocationService {
     }
 
     @Transactional
-    public Location createLocation(BaseLocationRequest request) {
+    public Location createLocation(Long tripId, BaseLocationRequest request) {
 
-        Trip trip = tripRepository.findById(request.getTripId())
+        Trip trip = tripRepository.findById(tripId)
                 .orElseThrow(() -> new RuntimeException("Trip not found"));
 
         Location location = Location.builder()
@@ -135,7 +135,7 @@ public class LocationService {
                 .filter(name -> currentTags.stream()
                         .noneMatch(t -> t.getName().equalsIgnoreCase(name)))
                 .collect(Collectors.toSet());
-        // Reuse hàm createTags(Set<BaseTagRequest>)
+
         Set<BaseTagRequest> tagReqsToAdd = newNamesToAdd.stream()
                 .map(BaseTagRequest::new)
                 .collect(Collectors.toSet());

@@ -14,7 +14,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class BaseLocationRequest {
-    private Long tripId;
     private String name;
     private String description;
     private Double latitude;
